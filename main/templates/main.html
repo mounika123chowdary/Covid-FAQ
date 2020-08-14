@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>Covid-19 FAQ Chatbot</h1>
+
+  </div>
+  <div id="maindiv">
+    <div id="chatbox">
+      <img src="/static/bot.png">
+      <p class="botText"><span>Hi! Ask me a query regarding Covid-19</span></p>
+    </div>
+  </div>
+  <div id="userInput" class="send-message">
+    <input id="textInput" class="rounded" type="text" name="msg" placeholder="Message">
+
+    <input id="buttonInput" class="button" type="image" src="/static/send_svg.svg" alt=" Submit">
+    <!-- <button id="buttonInput" class="button"><img src="/static/send_svg.svg" width="35" height="30"></button> -->
+  </div>
+
+  <script>
+    function updateScroll() {
+      var element = document.getElementById("maindiv");
+      element.scrollTop = element.scrollHeight;
+    }
+    function getBotResponse() {
+      var rawText = $("#textInput").val();
+      console.log(rawText.length);
+      if (rawText.length > 0) {
+        var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
+        $("#textInput").val("");
+        $("#chatbox").append(userHtml);
+        document.getElementById('userInput').scrollIntoView({ block: 'start', behavior: 'smooth' });
+        $.get("/get", { msg: rawText }).done(function (data) {
+          var botHtml = '<p class="botText"><span>' + data + '</span></p>';
+          $("#chatbox").append(botHtml);
+          document.getElementById('userInput').scrollIntoView({ block: 'start', behavior: 'smooth' });
+          console.log('bot responding')
+        }).then(() => {
+          updateScroll();
+          console.log('scrolling');
+        });
+      }
+
+    }
+    $("#textInput").keypress(function (e) {
+      if (e.which == 13) {
+        getBotResponse();
+      }
+    });
+    $("#buttonInput").click(function () {
+      getBotResponse();
+    });
+
+
+    function MyFunction(docurl) {
+      $.ajax({
+        url: '/opendoc',
+        data: { doc: docurl },
+        type: 'POST',
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (error) {
+          console.log(error);
+        }
+      });
+
+    }
+  </script>
+</body>
+
+</html>
