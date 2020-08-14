@@ -20,5 +20,7 @@
   You can directly run the file in Google collab
   
 # Result
- 
+  ![alt text](https://github.com/mounika123chowdary/Covid-FAQ/blob/master/main/output/Screenshot%20(138).png)
+  ![alt text](https://github.com/mounika123chowdary/Covid-FAQ/blob/master/main/output/Screenshot%20(139).png)
+  ![alt text](https://github.com/mounika123chowdary/Covid-FAQ/blob/master/main/output/Screenshot%20(140).png)
 
