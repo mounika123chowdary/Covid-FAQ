@@ -21,6 +21,4 @@
   
 # Result
  
-  
-  https://github.com/mounika123chowdary/Covid-FAQ/main/output/Screenshot (138).png
 
