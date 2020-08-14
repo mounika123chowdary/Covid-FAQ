@@ -1,0 +1,8 @@
+Required packages:
+Numpy
+Pandas
+Flask
+Tensorflow
+Tensorflow-Hub
+Chatterbot
+Chatterbot-corpus
