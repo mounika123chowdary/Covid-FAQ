@@ -6,24 +6,7 @@ import tensorflow_hub as hub
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
- 
-'''dataset preparation
-import numpy as np
-import nltk
-import re
-import pandas as pd
-import pickle
-import tensorflow as tf
-import tensorflow_hub as hub
-
-module_url = "https://tfhub.dev/google/universal-sentence-encoder-large/5"
-model = hub.load(module_url)
-def embed(input):
-  return model([input])
-dataset['Question_Vector'] = dataset.Question.map(embed)
-dataset['Question_Vector'] = dataset.Question_Vector.map(np.array)
-pickle.dump(updated_dataset, open('dataset.pkl', 'wb'))
-'''   
+  
         
 class DialogueManager(object):
     def __init__(self):
